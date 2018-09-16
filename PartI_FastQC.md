@@ -185,7 +185,10 @@ delete reads trimmed below length MINLEN
 1. What does :2:40:15 means?      (Check Trimmomatic’s manual)
 2. How many reads survive after Trimmomatic? (Hint: Check the messages left in the terminal after Trimmomatic)
 
-b) Using Trimmomatic to filter low quality reads
+
+**NOTE: Remember that trimmomatic only deletes reads if the length after trimming of adapter sequences is less than MINLEN (which we set to 36bp)**
+
+## b) Using Trimmomatic to filter low quality reads
 
 Because we saw that some of the reads were low quality at the beginning-end we will remove them
 
