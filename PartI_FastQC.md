@@ -5,13 +5,13 @@ Remember, linux is your friend :penguin::penguin::penguin:
 Just to remind you some useful commands for Today's workflow:
 
 ```
-ls for listing files
-more to view the files
-cd to access or exit folders
-mv for moving files
-cp for copying files
-mkdir to make directories
-wget to download files from the world wide web  
+ls                           (listing files)
+more                         (view the files)
+cd or cd ..                  (access or exit folders)
+mv                           (moving files)
+cp                           (copying files)
+mkdir                        (make directories)
+wget                         (download files from the web)  
 ```
 ...and many others! 
 
