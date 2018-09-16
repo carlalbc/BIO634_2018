@@ -7,7 +7,7 @@
 
 Before we get started --remember, linux is your friend :penguin::penguin::penguin:
 
-Just to remind you some useful commands for Today's workflow:
+- Just to remind you some useful commands for Today's workflow:
 
 ```
 ls                           (listing files)
@@ -24,16 +24,16 @@ wget                         (download files from the web)
 We will be working with data from the [Lenski lab](http://myxo.css.msu.edu/ecoli/genomicsdat.html) and Desai. They are known for making long-term evolution experiments in *E. coli* since the early 00’s. The strain we will work with today is an *E. coli* from a long-term evolution experiment (LTEE). The twelve LTEE populations have been serially propagated
 in the same medium for more than 60,000 generations, with samples preserved every 500 generations.  
 
-The sequencing data is from: [Good, B. H., McDonald, M. J., Barrick, J. E., Lenski, R. E., & Desai, M. M. (2017). The dynamics of molecular evolution over 60,000 generations. Nature, 551(7678), 45–50. doi:10.1038/nature24287](https://www.nature.com/articles/nature24287
+- The sequencing data is from: [Good, B. H., McDonald, M. J., Barrick, J. E., Lenski, R. E., & Desai, M. M. (2017). The dynamics of molecular evolution over 60,000 generations. Nature, 551(7678), 45–50. doi:10.1038/nature24287](https://www.nature.com/articles/nature24287
 ).
 
 Let's get started! 
 
 ## a) Downloading raw sequencing reads from a database.
 
-There are two main databases, the **Sequence Read Archive** (SRA, US based) and the **European nucleotide archive**(ENA, EU based). 
+- There are two main databases, the **Sequence Read Archive** (SRA, US based) and the **European nucleotide archive** (ENA, EU based). 
 
-Today we will download the raw reads from the ENA. The project accession name is [PRJNA380528](https://www.ebi.ac.uk/ena/data/view/PRJNA380528). Please, follow the next steps before downloading the reads:
+- Today we will download the raw reads from the ENA. The project accession name is [PRJNA380528](https://www.ebi.ac.uk/ena/data/view/PRJNA380528). Please, follow the next steps before downloading the fastq files:
  
 1. Create the following directories and go to the main directory (remember it's good to keep things tidy!):
 
@@ -51,36 +51,39 @@ wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR617/003/SRR6170103/SRR6170103_1.fastq
 
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR617/003/SRR6170103/SRR6170103_2.fastq.gz  (gets the second fastq paired-end read file from ENA and stores it in the subdirectory we just created)
 ```
-Let’s check the fastq files:
+- Let’s check the fastq files:
 
 ```
 less SRR6170103/SRR6170103_1.fastq.gz           (exit with Ctrl+Z)
 head SRR6170103/SRR6170103_1.fastq.gz           (shows the first 10 lines)
 ``` 
 
-*You can also use tail to see the end of the file.*
+- You can also use ***tail** to see the end of the file.
 
 Now that you have seen the files, continue with the rest of the workflow.
 
 
 b) **Run FASTQC:** when running new software it is always useful to understand it first. A quick glimpse to different options can be obtained by looking at the in-built help:
 
-´´´ 
-fastqc --help
-´´´
-**Now let’s assess the quality of our fastq files containing paired-end sequencing reads by running FastQC:**
+```  
+fastqc --help	
 
-We can do this either through the command-line(recommended, jump to option two) or by directly running FastQC and opening the files from the window by running the following in the terminal:
+Usage: fastqc seqfile1 seqfile2 .. seqfileN
+```
+
+- Now let’s assess the quality of our fastq files containing paired-end sequencing reads by running FastQC:
+
+- We can do this either through the command-line (recommended, jump to option two) or by directly running FastQC and opening the files from the window by running the following in the terminal:
  
-1) Graphical Interface option:
+- Graphical Interface option 1:
 
 ```
 fastqc &
 ```
 
-That will open FastQC and you will be able to open the fastq files directly with the software. If you prefer to use the command-line (recommended) do the following:
+That will open FastQC and you will be able to open the fastq files directly with the program. If you prefer to use the command-line (recommended) do the following:
 
-2) Command-line option:
+- Command-line option 2:
 
 ```  
 fastqc SRR6170103_1.fastq.gz SRR6170103_2.fastq.gz                       (wait till it’s done running)
@@ -122,17 +125,17 @@ Those are really bad quality reads! :octocat:
 ## Questions:
 
 
-1. What’s the total number of sequences in each of the paired-end fastq files?  (Hint: look at the Basic statistics module)
+:one: What’s the total number of sequences in each of the paired-end fastq files?  (Hint: look at the Basic statistics module)
 
 SRR6170103_1 Total number of sequences  _________
 
 SRR6170103_2 Total number of sequences  _________
 
 
-1. What’s the type of encoding used?
-2. What’s the length of the reads? 
-3. What are the warnings we get for each of the fastq files? 
-4. Which sequence seems to be overrepresented? 
+2. What’s the type of encoding used?
+3. What’s the length of the reads? 
+4. What are the warnings we get for each of the fastq files? 
+5. Which sequence seems to be overrepresented? 
 
 There is an expected drop in quality at the 3’ end of the sequences and also to get an overrepresentation of adaptor sequences. We will trim the low quality ends and remove adaptors next.
 
@@ -148,38 +151,38 @@ java -jar trimmomatic-0.35.jar PE -phred33  SRR6170103_1.fastq.gz SRR6170103_2.f
 ```
 
 The parameters used for Trimmomatic are defined as follows:
-1) **-PE**
+1) **PE**
 data is paired end
-2) **-phred33**
+2) **phred33**
 Quality scores are 33 offset
-3) **-threads 1**
+3) **threads 1**
 number of threads to use
-4) **-trimlog logfile**
+4) **trimlog logfile**
 name of logfile for summary information
-5)**paired_end1.fastq**
+5) **paired_end1.fastq**
 name of input fastq file for left reads
-**paired_end2.fastq**
+6) **paired_end2.fastq**
 name of input fastq file for right reads
-**Left_paired.fastq**
+7) **Left_paired.fastq**
 paired trimmed output fastq file for left reads
-**Left_unpaired.fastq**
+8) **Left_unpaired.fastq**
 unpaired trimmed output fastq file for left reads
-**Right_paired.fastq**
+9) **Right_paired.fastq**
 paired trimmed output fastq file for right reads
-**Right_unpaired.fastq**
+10) **Right_unpaired.fastq**
 unpaired trimmed output fastq file for right reads
-**ILLUMINACLIP**
+11) **ILLUMINACLIP**
 parameters for the adapter clipping
-**TruSeq3-PE-2.fa** 
+12) **TruSeq3-PE-2.fa** 
 text file of adapter sequences to search for
-**:2:40:15**
+13) **:2:40:15**
 adapter-read alignment settings – see manual
-**MINLEN:36**
+14) **MINLEN:36**
 delete reads trimmed below length MINLEN
 
 ## Questions: 
 
-1. While you wait, what does :2:40:15 means? (Check Trimmomatic’s manual)
+1. What does :2:40:15 means?      (Check Trimmomatic’s manual)
 2. How many reads survive after Trimmomatic? (Hint: Check the messages left in the terminal after Trimmomatic)
 
 b) Using Trimmomatic to filter low quality reads
