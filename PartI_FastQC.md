@@ -1,9 +1,9 @@
 # BIO694 - Next generation sequencing II (NGS). Genomes, Variant Calling and Biological Interpretation
 ## September 17-18th 2018, University of Zürich (UZH)
-###### URPP Evolution in action
+## URPP Evolution in action
 
 
-## Part I.- Mapping a genome - QC and FastaQC 
+# Part I.- DataQC, pre-processing and mapping genomes 
 
 Before we get started --remember, linux is your friend :penguin::penguin::penguin:
 
@@ -29,11 +29,13 @@ The sequencing data is from: [Good, B. H., McDonald, M. J., Barrick, J. E., Lens
 
 Let's get started! 
 
-a) Download the raw reads in the database: **SRA** (Sequence read archive - NCBI, USA) or **ENA** (European nucleotide Archive). 
+## a) Downloading raw sequencing reads from a database.
 
-The raw reads will be downloaded from ENA: Project accession name [PRJNA380528](https://www.ebi.ac.uk/ena/data/view/PRJNA380528). To do so, do follow the next steps:
+There are two main databases, the **Sequence Read Archive** (SRA, US based) and the **European nucleotide archive**(ENA, EU based). 
+
+Today we will download the raw reads from the ENA. The project accession name is [PRJNA380528](https://www.ebi.ac.uk/ena/data/view/PRJNA380528). Please, follow the next steps before downloading the reads:
  
-1. Create the following directories and go to the main (remember is good to keep things tidy!):
+1. Create the following directories and go to the main directory (remember it's good to keep things tidy!):
 
 ``` 
 mkdir fastq                  (creates a folder called fastq)
@@ -49,25 +51,35 @@ wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR617/003/SRR6170103/SRR6170103_1.fastq
 
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR617/003/SRR6170103/SRR6170103_2.fastq.gz -P SRR6170103_2 (gets second fastq paired-end read file from ENA and stores it in the subdirectory we just created)
 ```
-Let’s see the reads:
+Let’s check the fastq files:
 
 ```
-less SRR6170103_1/SRR6170103_1.fastq.gz (exit with Ctrl Z)
-head SRR6170103_1/SRR6170103_1.fastq.gz (shows the first 10 lines)
+less SRR6170103_1/SRR6170103_1.fastq.gz           (exit with Ctrl+Z)
+head SRR6170103_1/SRR6170103_1.fastq.gz           (shows the first 10 lines)
 ``` 
-*You can also use tail to see the end of the file.*
 
+*You can also use tail to see the end of the file.*
 
 Now that you have seen the files, continue with the rest of the workflow.
 
 
-b) **Run FASTQC:** when running new software it is always useful to understand it first. A quick glimpse to different options that can be run can be obtained looking at the in-built help:
+b) **Run FASTQC:** when running new software it is always useful to understand it first. A quick glimpse to different options can be obtained by looking at the in-built help:
 
 ´´´ 
-./fastqc --help          or directly
 fastqc --help
 ´´´
-* Now let’s assess the quality of our paired-end reads by running FastQC:
+**Now let’s assess the quality of our fastq files containing paired-end sequencing reads by running FastQC:**
+
+We can do this either through the command-line(recommended, jump to option two) or by directly running FastQC and opening the files from the window by running the following in the terminal:
+ 
+1) Graphical Interface option:
+```
+fastqc &
+```
+
+That will open FastQC and you will be able to open the fastq files directly with the software. If you prefer to use the command-line (recommended) do the following:
+
+2) Command-line option:
 
 ´´´  
 fastqc SRR6170103_1.fastq.gz SRR6170103_2.fastq.gz (wait till it’s done running)
@@ -82,7 +94,7 @@ pwd          (shows the location where you are in the terminal)
 ```
 
 
-* Open the FastQC results with your favorite html visualizer (i.e firefox, chrome, etc.) or access the folder through your graphical interface if you prefer.
+* Open the FastQC results with your favorite html visualizer (i.e firefox, chrome, etc.) or if you prefer it, you can open the file through your graphical interface by directly clicking on it.
 
 ```
 firefox SRR6170103_1_fastqc.html
@@ -101,6 +113,7 @@ You could get *really bad quality reads* like the following:
   
 
 Those are really bad quality reads! :octocat:
+
 
 
 * Go through this manual https://dnacore.missouri.edu/PDF/FastQC_Manual.pdf to understand each of the results you have gotten in your report.
