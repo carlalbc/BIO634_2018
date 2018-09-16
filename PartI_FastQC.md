@@ -132,15 +132,15 @@ java -jar trimmomatic-0.35.jar PE -phred33  SRR6170103_1.fastq.gz SRR6170103_2.f
 ```
 
 The parameters used for Trimmomatic are defined as follows:
-**-PE**
+1) **-PE**
 data is paired end
-**-phred33**
+2) **-phred33**
 Quality scores are 33 offset
-**-threads 1**
+3) **-threads 1**
 number of threads to use
-**-trimlog logfile**
+4) **-trimlog logfile**
 name of logfile for summary information
-**paired_end1.fastq**
+5)**paired_end1.fastq**
 name of input fastq file for left reads
 **paired_end2.fastq**
 name of input fastq file for right reads
