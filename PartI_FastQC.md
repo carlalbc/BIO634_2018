@@ -47,15 +47,15 @@ mkdir FastQC                 (we will store the results from the QC here later)
 2. Download the fastq files from ENA - we will work with paired-end reads from E. coli:
 
 ```
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR617/003/SRR6170103/SRR6170103_1.fastq.gz -P SRR6170103_1 (gets the first fastq paired-end read from ENA and stores it in the subdirectory we just created)
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR617/003/SRR6170103/SRR6170103_1.fastq.gz  (gets the first fastq paired-end read from ENA and stores it in the subdirectory we just created)
 
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR617/003/SRR6170103/SRR6170103_2.fastq.gz -P SRR6170103_2 (gets second fastq paired-end read file from ENA and stores it in the subdirectory we just created)
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR617/003/SRR6170103/SRR6170103_2.fastq.gz  (gets the second fastq paired-end read file from ENA and stores it in the subdirectory we just created)
 ```
 Let’s check the fastq files:
 
 ```
-less SRR6170103_1/SRR6170103_1.fastq.gz           (exit with Ctrl+Z)
-head SRR6170103_1/SRR6170103_1.fastq.gz           (shows the first 10 lines)
+less SRR6170103/SRR6170103_1.fastq.gz           (exit with Ctrl+Z)
+head SRR6170103/SRR6170103_1.fastq.gz           (shows the first 10 lines)
 ``` 
 
 *You can also use tail to see the end of the file.*
@@ -73,6 +73,7 @@ fastqc --help
 We can do this either through the command-line(recommended, jump to option two) or by directly running FastQC and opening the files from the window by running the following in the terminal:
  
 1) Graphical Interface option:
+
 ```
 fastqc &
 ```
@@ -81,11 +82,11 @@ That will open FastQC and you will be able to open the fastq files directly with
 
 2) Command-line option:
 
-´´´  
-fastqc SRR6170103_1.fastq.gz SRR6170103_2.fastq.gz (wait till it’s done running)
-mv *.zip *.html FastQC (move the files to the FastQC folder)
+```  
+fastqc SRR6170103_1.fastq.gz SRR6170103_2.fastq.gz                       (wait till it’s done running)
+mv *.zip *.html FastQC                                                   (move the files to the FastQC folder)
 cd FastQC
-´´´
+``` 
 
 **Reminder:** You can always check where you are in the terminal using:
 
@@ -93,12 +94,12 @@ cd FastQC
 pwd          (shows the location where you are in the terminal)
 ```
 
-
 * Open the FastQC results with your favorite html visualizer (i.e firefox, chrome, etc.) or if you prefer it, you can open the file through your graphical interface by directly clicking on it.
 
 ```
 firefox SRR6170103_1_fastqc.html
 ```
+
 You will see the following:
   
 
