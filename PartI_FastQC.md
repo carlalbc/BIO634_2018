@@ -1,9 +1,12 @@
 # BIO694 - Next generation sequencing II (NGS). Genomes, Variant Calling and Biological Interpretation
-# September 17-18th 2018, UZH
-## University of Zurich
-## URPP Evolution in action
+## September 17-18th 2018
+###### University of Zurich
+###### URPP Evolution in action
 
-Remember, linux is your friend :penguin::penguin::penguin:
+
+## Part I.- Mapping a genome - QC and FastaQC 
+
+Before we get started --remember, linux is your friend :penguin::penguin::penguin:
 
 Just to remind you some useful commands for Today's workflow:
 
@@ -16,9 +19,6 @@ cp                           (copying files)
 mkdir                        (make directories)
 wget                         (download files from the web)  
 ```
-...and many others! 
-
-## Part I.- Mapping a genome - QC and FastaQC 
 
 ## I) Quality Assesment: Pre-processing the reads
 
