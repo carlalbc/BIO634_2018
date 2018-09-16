@@ -58,7 +58,7 @@ less SRR6170103/SRR6170103_1.fastq.gz           (exit with Ctrl+Z)
 head SRR6170103/SRR6170103_1.fastq.gz           (shows the first 10 lines)
 ``` 
 
-- You can also use ***tail** to see the end of the file.
+- You can also use ***tail*** to see the end of the file.
 
 Now that you have seen the files, continue with the rest of the workflow.
 
@@ -125,7 +125,7 @@ Those are really bad quality reads! :octocat:
 ## Questions:
 
 
-:one: What’s the total number of sequences in each of the paired-end fastq files?  (Hint: look at the Basic statistics module)
+1. What’s the total number of sequences in each of the paired-end fastq files?  (Hint: look at the Basic statistics module)
 
 SRR6170103_1 Total number of sequences  _________
 
@@ -189,6 +189,10 @@ b) Using Trimmomatic to filter low quality reads
 
 Because we saw that some of the reads were low quality at the beginning-end we will remove them
 
-## II) Mapping the reads to a reference genome of E.coli using BWA. link to BWA aligner.
+## II) Mapping the reads to a reference genome of *E. coli* using Burrows Wheeler Aligner (BWA).
+
+Here's the [manual](http://bio-bwa.sourceforge.net/bwa.shtml)
+
+
 
 
