@@ -190,9 +190,49 @@ delete reads trimmed below length MINLEN
 
 ## b) Using Trimmomatic to filter low quality reads
 
-Because we saw that some of the reads were low quality at the beginning-end we will remove them
+Now we remove the low quality reads that we saw at the 3' end of the sequences by trimming the first 3 bases of the reads with the following command:
 
-## II) Mapping the reads to a reference genome of *E. coli* using Burrows Wheeler Aligner (BWA).
+```
+java -jar ../../../software/Trimmomatic-0.38/trimmomatic-0.38.jar PE -phred33 -threads 1 -trimlog logfile2 SRR6170103_1_paired.fastq.gz SRR6170103_2_paired.fastq.gz SRR6170103_1_trim_paired.fastq.gz SRR6170103_1_unpaired.fastq SRR6170103_2_trim_paired.fastq SRR6170103_2_trim_unpaired.fastq SLIDINGWINDOW:4:15 LEADING:3 TRAILING:3 MINLEN:36
+```
+The parameters from Trimmomatic here are defined as follows:
+
+The parameters used for Trimmomatic are defined as follows:
+
+1) **PE**
+data is paired end
+2) **phred33**
+Quality scores are 33 offset
+3) **threads 1** 
+number of threads to use
+4)**trimlog logfile2**
+name of logfile for summary information
+5)**Left_paired.fastq**
+name of input adapter trimmed left fastq file
+6)**Right_paired.fastq**
+name of input adapter trimmed right fastq file
+7)**Left_trim_paired.fastq**
+paired trimmed output fastq file for left reads
+8)**Left_unpaired.fastq**
+unpaired trimmed output fastq file for left reads
+9)**Right_paired.fastq**
+paired trimmed output fastq file for right reads
+10)**Right_unpaired.fastq**
+unpaired trimmed output fastq file for right reads
+11)**LEADING:3**
+Trim 5’ bases with quality score < 3
+12)**TRAILING:3**
+Trim 3’ bases with quality score < 3
+13)**SLIDINGWINDOW:4:15** see manual for explanation
+14)**MINLEN:36**
+delete reads trimmed below length MINLEN
+
+
+#Questions:
+
+- 
+
+II) Mapping the reads to a reference genome of *E. coli* using Burrows Wheeler Aligner (BWA).
 
 Here's the [manual](http://bio-bwa.sourceforge.net/bwa.shtml)
 
