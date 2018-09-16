@@ -1,4 +1,7 @@
-# BIO694 - Next generation sequencing (NGS) workshop, UZH
+# BIO694 - Next generation sequencing II (NGS). Genomes, Variant Calling and Biological Interpretation
+# September 17-18th 2018, UZH
+## University of Zurich
+## URPP Evolution in action
 
 Remember, linux is your friend :penguin::penguin::penguin:
 
