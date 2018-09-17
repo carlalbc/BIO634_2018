@@ -115,12 +115,11 @@ firefox SRR6170103_1_fastqc.html
 
 You will see the following:
   
-
-
+![alt text](https://github.com/carlalbc/BIO694_2018/blob/master/img/fastqc_report1.png)
 
 Pretty good quality! :octocat:
 
-
+![alt text]()
 You could get *really bad quality reads* like the following:
 
 
