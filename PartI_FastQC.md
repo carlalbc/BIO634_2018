@@ -344,7 +344,7 @@ samtools faidx GCF_000005845.2_ASM584v2_genomic.fna
 ```
 - picard index
 ```
-java -jar /home/APPL/PICARD/picard.2.18.0.jar CreateSequenceDictionary R=GCF_000005845.2_ASM584v2_genomic.fna O=GCF_000005845.2_ASM584v2_genomic.dict
+java -jar /home/student/APPL/PICARD/picard.2.18.0.jar CreateSequenceDictionary R=GCF_000005845.2_ASM584v2_genomic.fna O=GCF_000005845.2_ASM584v2_genomic.dict
 ```
 
 # Step 3: Align reads to the Reference Genome using BWA
@@ -384,7 +384,7 @@ samtools view -H SRR6170103_sorted.bam
 Picard is a set of command line tools for manipulating high-throughput sequencing (HTS) data and formats such as SAM/BAM/CRAM and VCF. More information can be found [here](https://broadinstitute.github.io/picard/command-line-overview.html#Overview)
 
 ```
-java -jar /home/APPL/PICARD/picard.2.18.0.jar MarkDuplicates INPUT=SRR6170103_sorted.bam OUTPUT=SRR6170103_final.bam
+java -jar /home/student/APPL/PICARD/picard.2.18.0.jar MarkDuplicates INPUT=SRR6170103_sorted.bam OUTPUT=SRR6170103_final.bam
 METRICS_FILE=dupl_metrics.txt
 ```
 
