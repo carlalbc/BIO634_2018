@@ -252,7 +252,7 @@ If not installed already, download SOAPec
 
 ```
 mkdir software
-wget http://sourceforge.net/projects/soapdenovo2/files/ErrorCorrection/SOAPec_v2.01.tar.gz/download -P software
+wget http://sourceforge.net/projects/soapdenovo2/files/ErrorCorrection/SOAPec_v2.01.tar.gz -P software
 cd software
 tar -zxf SOAPec_v2.01.tar.gz
 cd ..
