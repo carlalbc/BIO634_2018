@@ -43,7 +43,7 @@ Let's get started!
 
 ```
 mkdir mapping
-mkdir fastq                          (creates a folder called fastq)
+mkdir mapping/fastq                          (creates a folder called fastq)
 mkdir mapping/fastq/SRR6170103       (creates a subdirectory for the fastq files)
 cd mapping/fastq/SRR6170103          (goes to the SRR6170103 inside the fastq directory)
 mkdir FastQC                         (we will store the results from the QC here later)
