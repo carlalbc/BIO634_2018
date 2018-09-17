@@ -1,7 +1,9 @@
 # BIO694 - Next generation sequencing (NGS) II. Genomes, Variant Calling and Biological Interpretation
-## September 17-18th 2018, University of Zürich (UZH)
-## URPP Evolution in action
+## September 17-18th 2018, University of Zürich (UZH)![alt text]
 
+![alt text](https://github.com/carlalbc/URPP_tutorials/blob/master/img/Logo_URPP_kl2.png)
+
+## URPP Evolution in action
 
 # Part I.- DataQC, pre-processing and mapping genomes 
 
@@ -29,7 +31,7 @@ in the same medium for more than 60,000 generations, with samples preserved ever
 
 Let's get started! 
 
-## a) Downloading raw sequencing reads from a database.
+## Step 1: Downloading raw sequencing reads from a database.
 
 - There are two main databases, the **Sequence Read Archive** (SRA, US based) and the **European nucleotide archive** (ENA, EU based). 
 
@@ -63,7 +65,9 @@ head SRR6170103/SRR6170103_1.fastq.gz           (shows the first 10 lines)
 Now that you have seen the files, continue with the rest of the workflow.
 
 
-b) **Run FASTQC:** when running new software it is always useful to understand it first. A quick glimpse to different options can be obtained by looking at the in-built help:
+## Step 2: Run FASTQC
+
+When running new software it is always useful to understand it first. A quick glimpse to different options can be obtained by looking at the in-built help:
 
 ```  
 fastqc --help	
@@ -144,7 +148,7 @@ There is an expected drop in quality at the 3’ end of the sequences and also t
 
 c) Trimming, removing adaptors and low quality reads with Trimmomatic: a java tool for performing a range of trimming tasks on Illumina paired end and single end read data. The manual can be found [here](http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/TrimmomaticManual_V0.32.pdf)
 
-1. We use Trimmomatic to remove adapter sequences:
+## Step 3: Use Trimmomatic to remove adapter sequences
 
 ```
 java -jar trimmomatic-0.35.jar PE -phred33  SRR6170103_1.fastq.gz SRR6170103_2.fastq.gz SRR6170103_1_paired.fastq.gz SRR6170103_1_unpaired.fastq.gz SRR6170103_2_paired.fastq.gz SRR6170103_2_unpaired.fastq.gz ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
@@ -188,15 +192,13 @@ delete reads trimmed below length MINLEN
 
 **NOTE: Remember that trimmomatic only deletes reads if the length after trimming of adapter sequences is less than MINLEN (which we set to 36bp)**
 
-## b) Using Trimmomatic to filter low quality reads
+## Step 4: Use Trimmomatic to filter low quality reads
 
-Now we remove the low quality reads that we saw at the 3' end of the sequences by trimming the first 3 bases of the reads with the following command:
+Next, we can remove low quality reads of the sequences by trimming the bases at the 3' end of the reads with the following command:
 
 ```
-java -jar ../../../software/Trimmomatic-0.38/trimmomatic-0.38.jar PE -phred33 -threads 1 -trimlog logfile2 SRR6170103_1_paired.fastq.gz SRR6170103_2_paired.fastq.gz SRR6170103_1_trim_paired.fastq.gz SRR6170103_1_unpaired.fastq SRR6170103_2_trim_paired.fastq SRR6170103_2_trim_unpaired.fastq SLIDINGWINDOW:4:15 LEADING:3 TRAILING:3 MINLEN:36
+java -jar ../../../software/Trimmomatic-0.38/trimmomatic-0.38.jar PE -phred33 -threads 1 -trimlog logfile2 SRR6170103_1_paired.fastq.gz SRR6170103_2_paired.fastq.gz SRR6170103_1_trim_paired.fastq SRR6170103_1_unpaired.fastq SRR6170103_2_trim_paired.fastq SRR6170103_2_trim_unpaired.fastq SLIDINGWINDOW:4:15 LEADING:3 TRAILING:3 MINLEN:36
 ```
-The parameters from Trimmomatic here are defined as follows:
-
 The parameters used for Trimmomatic are defined as follows:
 
 1) **PE**
@@ -230,7 +232,69 @@ delete reads trimmed below length MINLEN
 
 #Questions:
 
-- 
+- What was the screenlog of Trimmomatic this time? How many reads were removed? Whas there any?
+- What does the SLIDINGWINDOW:4:15 means? Check the manual.
+
+## Step 5: Use SOAPec to correct sequencing errors
+
+If not installed already, download SOAPec
+
+```
+mkdir software
+wget http://sourceforge.net/projects/soapdenovo2/files/ErrorCorrection/SOAPec_v2.01.tar.gz/download -P software
+cd software
+tar -zxf SOAPec_v2.01.tar.gz
+cd ..
+```
+
+Now we need to create a file with the fastq files location for SOAPec to be able to work. Use your favorite text editor (ie. gedit) and write the path of our fastq files. If you can't remember, use ***pwd**.
+
+```
+gedit files.txt &
+```
+
+It will open up gedit where you have to write the path of the files that you created in Step 4. 
+In **my** case it will look like this:
+
+```
+/home/vega/URPP_2018/BIO634-2018/PartI/fastq/SRR6170103/SRR6170103_1_trim_paired.fastq
+/home/vega/URPP_2018/BIO634-2018/PartI/fastq/SRR6170103/SRR6170103_2_trim_paired.fastq
+```
+Save the file (Ctrl+S) and exit (Alt+F4). Then, run the KmerFreq_AR command below and when it finishes run the Corrector_AR command.
+
+Depending on your location and where you downloaded and installed SOAPEc the path will change slightly. Remember to use **pwd** to know where you are.
+
+```
+/home/vega/URPP_2018/BIO634-2018/software/SOAPec_v2.01/bin/KmerFreq_AR -k 16 -t 1 -q 33 -p Error_Corr files.txt > kmerfreq16.log 2> kmerfreq16.err
+/home/vega/URPP_2018/BIO634-2018/software/SOAPec_v2.01/bin/Corrector_AR -k 16 -Q 33 -t 1 -o 3 Error_Corr.freq.cz Error_Corr.freq.cz.len files.txt > Corr16.log 2>Corr16.err
+```
+## Questions
+
+1. Inspect the output of Corrector_AR output file SRR6170103_1_trim_paired.fastq.cor.stat (Hint, use ***more*** / ***less***)
+
+For SRR6170103_1:
+
+- How many bases were corrected by the "Fast method"?  ______________
+
+- How many bases were corrected by the "BBtree method"?  ______________
+
+What about for SRR6170103_2?
+
+- How many bases were corrected by the "Fast method"?  ______________
+
+- How many bases were corrected by the "BBtree method"?  ______________
+
+- **Are there any differences between the two? What conclusions can you make?**
+
+_____________________________________________________________________________________
+
+
+**If you closed FastQC before, open it and run it for the trimmed paired-end reads, do they look very different?**
+
+
+Congratulations you now can continue with the next step of our practice! :octocat:
+
+
 
 II) Mapping the reads to a reference genome of *E. coli* using Burrows Wheeler Aligner (BWA).
 
