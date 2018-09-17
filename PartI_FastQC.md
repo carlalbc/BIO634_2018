@@ -114,14 +114,15 @@ pwd          (shows the location where you are in the terminal)
 firefox SRR6170103_1_fastqc.html
 ```
 
-You will see the following:
+- You will see the following:
   
 ![alt text](https://github.com/carlalbc/BIO694_2018/blob/master/img/fastqc_report1.png)
 
 Pretty good quality! :octocat:
 
 
-You could get *really bad quality reads* like the following:
+-You could get *really bad quality reads* like the following:
+
 ![alt text](https://github.com/carlalbc/BIO694_2018/blob/master/img/fastqc_bad1.png)
 
 Those are really bad quality reads! :octocat:
