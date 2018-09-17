@@ -17,6 +17,14 @@ Today we will work with data from the Zebrafish at different stages of different
 - 2cells_1.fastq and 2cells_2.fastq: these files are based on RNA-seq data of a 2-cell zebrafish embryo, and
 - 6h_1.fastq and 6h_2.fastq: these files are based on RNA-seq data of zebrafish embryos 6h post fertilization.
 
+## Clone binaries of STAR with git
+
+```
+git clone https://github.com/alexdobin/STAR.git
+
+```
+- The documentation for STAR is available [here](https://github.com/alexdobin/STAR/raw/master/doc/STARmanual.pdf)
+
 ## Prepare all the directories and download the data
 
 - Remember you can go from one directory to the next using ***cd***. Now let's create a new directory called STARGenome.
