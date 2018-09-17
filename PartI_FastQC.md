@@ -314,23 +314,55 @@ NOTE: Exit the fastq folder using ***cd ..*** until you get to your main directo
 ## II) Mapping sequencing reads to a reference genome using the Burrows-Wheeler Aligner (BWA) tool
 
 
-In this part of the hands-on session we will map the cleaned reads from the previous steps to the reference genome of *E. coli*.
+BWA is a software package for mapping low-divergent sequences against a large reference genome, such as the human genome. You can find the manual [here](http://bio-bwa.sourceforge.net/bwa.shtml)
+ 
+- In this part of the hands-on session we will map the cleaned reads from the previous steps to the reference genome of *E. coli*.
 
-##Step 1: Download the reference genome and its annotation file
+## Step 1: Download the reference genome and its annotation file
 
+Go to the main folder (we called it mapping) and download the files.
 
 ```
-
-mkdir 
+cd mapping
 wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz
 wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.gff.gz
+gunzip *
 ```
 
- 
-Here's the [manual](http://bio-bwa.sourceforge.net/bwa.shtml)
+## Step 2: Create indices and dictionaries for bwa, samtools and picard.
 
+Indices are necessary for quick access to specific information in very large files.
 
+As you go creating the indices check for the files with ***ls***
 
+- bwa index
+```
+bwa index -a is GCF_000005845.2_ASM584v2_genomic.fna
+```
+- -a is Sets the algorithm to be used to construct a suffix array. This is suitable for
+databases smaller than 2GB.
+
+- samtools index
+```
+samtools faidx GCF_000005845.2_ASM584v2_genomic.fna
+```
+- picard index
+```
+java -jar picard.jar CreateSequenceDictionary R=GCF_000005845.2_ASM584v2_genomic.fna O=GCF_000005845.2_ASM584v2_genomic.dict
+```
+
+# Step 3: Align reads to the Reference Genome using BWA
+
+```
+bwa mem GCF_000005845.2_ASM584v2_genomic.fna fastq/SRR6170103/SRR6170103_1_trim_paired.fastq fastq/SRR6170103/SRR6170103_2_trim_paired.fastq > SRR6170103.sam
+```
+
+See bwa manual [here](http://bio-bwa.sourceforge.net/bwa.shtml) for more options.
+
+- Convert the new sam file to bam format (bam is a binary version of the sam format):
+```
+samtools view -b SRR6170103.sam -o SRR6170103.bam
+```
 
 
 
