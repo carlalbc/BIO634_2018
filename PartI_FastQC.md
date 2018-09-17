@@ -262,7 +262,7 @@ In **my** case it will look like this:
 ```
 Save the file (Ctrl+S) and exit (Alt+F4). Then, run the KmerFreq_AR command below and when it finishes run the Corrector_AR command.
 
-Depending on your location and where you downloaded and installed SOAPEc the path will change slightly. Remember to use **pwd** to know where you are.
+Depending on your location and where you downloaded SOAPEc *the path will change slightly*. Remember to use **pwd** to know where you are.
 
 ```
 /home/vega/URPP_2018/BIO634-2018/software/SOAPec_v2.01/bin/KmerFreq_AR -k 16 -t 1 -q 33 -p Error_Corr files.txt > kmerfreq16.log 2> kmerfreq16.err
