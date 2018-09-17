@@ -52,9 +52,9 @@ mkdir FastQC                         (we will store the results from the QC here
 2. Download the fastq files from ENA - we will work with paired-end reads from E. coli:
 
 ```
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR617/003/SRR6170103/SRR6170103_1.fastq.gz  (gets the first fastq paired-end read from ENA and stores it in the subdirectory we just created)
+wget http://ftp.sra.ebi.ac.uk/vol1/fastq/SRR617/003/SRR6170103/SRR6170103_1.fastq.gz  (gets the first fastq paired-end read from ENA and stores it in the subdirectory we just created)
 
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR617/003/SRR6170103/SRR6170103_2.fastq.gz  (gets the second fastq paired-end read file from ENA and stores it in the subdirectory we just created)
+wget http://ftp.sra.ebi.ac.uk/vol1/fastq/SRR617/003/SRR6170103/SRR6170103_2.fastq.gz  (gets the second fastq paired-end read file from ENA and stores it in the subdirectory we just created)
 ```
 - Let’s check the fastq files:
 
