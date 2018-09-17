@@ -361,7 +361,7 @@ samtools view -b SRR6170103.sam -o SRR6170103.bam
 ```
 - Sort the bam file
 ```
-samtools sort SRR6170103.bam –o SRR6170103_sorted.bam
+samtools sort SRR6170103.bam -o SRR6170103_sorted.bam
 ```
 - Index the sorted bam for fast access
 ```
@@ -384,8 +384,7 @@ samtools view -H SRR6170103_sorted.bam
 Picard is a set of command line tools for manipulating high-throughput sequencing (HTS) data and formats such as SAM/BAM/CRAM and VCF. More information can be found [here](https://broadinstitute.github.io/picard/command-line-overview.html#Overview)
 
 ```
-java -jar /home/student/APPL/PICARD/picard.2.18.0.jar MarkDuplicates INPUT=SRR6170103_sorted.bam OUTPUT=SRR6170103_final.bam
-METRICS_FILE=dupl_metrics.txt
+java -jar /home/student/APPL/PICARD/picard.2.18.0.jar MarkDuplicates INPUT=SRR6170103_sorted.bam OUTPUT=SRR6170103_final.bam METRICS_FILE=dupl_metrics.txt
 ```
 
 Let's do a quick BAMQC by running samtools:
