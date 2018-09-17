@@ -121,7 +121,7 @@ firefox SRR6170103_1_fastqc.html
 Pretty good quality! :octocat:
 
 
--You could get *really bad quality reads* like the following:
+- You could get *really bad quality reads* like the following:
 
 ![alt text](https://github.com/carlalbc/BIO694_2018/blob/master/img/fastqc_bad1.png)
 
