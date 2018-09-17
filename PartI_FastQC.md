@@ -296,7 +296,7 @@ Congratulations you now can continue with the next step of our practice! :octoca
 
 
 
-II) Mapping the reads to a reference genome of *E. coli* using Burrows Wheeler Aligner (BWA).
+# II) Mapping the reads to a reference genome of *E. coli* using Burrows Wheeler Aligner (BWA).
 
 Here's the [manual](http://bio-bwa.sourceforge.net/bwa.shtml)
 
