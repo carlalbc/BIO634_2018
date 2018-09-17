@@ -407,5 +407,6 @@ Register, and you’ll find the IGV Java Web start.​ ​ Launch IGV with 750 M
 
 - Load the bam file using *E. coli*'s reference genome.
 
+Or run IGV from the /home/student/APLL/
 
 
