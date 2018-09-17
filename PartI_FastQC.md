@@ -383,3 +383,34 @@ samtools view -H SRR6170103_sorted.bam
 2. How many chromosomes are present and which version of the SAM is it?
 
 
+## Step 4: BAM Refinement: duplicate removal with Picard
+
+Picard is a set of command line tools for manipulating high-throughput sequencing (HTS) data and formats such as SAM/BAM/CRAM and VCF. More information can be found [here](https://broadinstitute.github.io/picard/command-line-overview.html#Overview)
+
+```
+java -jar picard.jar MarkDuplicates INPUT=SRR6170103_sorted.bam OUTPUT=SRR6170103_final.bam
+METRICS_FILE=dupl_metrics.txt
+```
+
+Let's do a quick BAMQC by running samtools:
+```
+samtools flagstat SRR6170103_sorted.bam > SRR6170103_sorted.flagstat
+samtools flagstat SRR6170103_final.bam > SRR6170103_final.flagstat
+```
+
+## Questions
+
+1. What's the percentage of duplicated reads? (Hint: look at the file dupl_metrics.txt)
+2. Do you observe any diferences between the file with and without duplicates? (Hint: look at the flagstat files)
+
+
+## BAM visualisation
+
+We will use the java web start version of IGV.
+Follow this link: ​ https://www.broadinstitute.org/software/igv/download
+Register, and you’ll find the IGV Java Web start.​ ​ Launch IGV with 750 MB.
+
+- Load the bam file using *E. coli*'s reference genome.
+
+
+
