@@ -119,15 +119,11 @@ You will see the following:
 
 Pretty good quality! :octocat:
 
-![alt text]()
+
 You could get *really bad quality reads* like the following:
-
-
-  
+![alt text](https://github.com/carlalbc/BIO694_2018/blob/master/img/fastqc_bad1.png)
 
 Those are really bad quality reads! :octocat:
-
-
 
 * Go through this manual https://dnacore.missouri.edu/PDF/FastQC_Manual.pdf to understand each of the results you have gotten in your report.
 
