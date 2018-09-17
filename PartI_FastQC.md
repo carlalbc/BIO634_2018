@@ -60,7 +60,7 @@ wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR617/003/SRR6170103/SRR6170103_2.fastq
 
 ```
 less SRR6170103/SRR6170103_1.fastq.gz           (exit with Ctrl+Z)
-head SRR6170103/SRR6170103_1.fastq.gz           (shows the first 10 lines)
+head SRR6170103/SRR6170103_1.fastq.gz           (shows the first 10 lines, but in this case it's compressed so it will look funny)
 ``` 
 
 - You can also use ***tail*** to see the end of the file.
