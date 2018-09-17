@@ -339,7 +339,7 @@ As you go creating the indices check for the files with ***ls***
 ```
 bwa index -a is GCF_000005845.2_ASM584v2_genomic.fna
 ```
-- -a is Sets the algorithm to be used to construct a suffix array. This is suitable for
+***-a is*** Sets the algorithm to be used to construct a suffix array. This is suitable for
 databases smaller than 2GB.
 
 - samtools index
@@ -363,7 +363,23 @@ See bwa manual [here](http://bio-bwa.sourceforge.net/bwa.shtml) for more options
 ```
 samtools view -b SRR6170103.sam -o SRR6170103.bam
 ```
+- Sort the bam file
+```
+samtools sort SRR6170103.bam –o SRR6170103_sorted.bam
+```
+- Index the sorted bam for fast access
+```
+samtools index SRR6170103_sorted.bam 
+```
+- View the sorted bam file 
 
+```
+samtools view -H SRR6170103_sorted.bam 
+```
 
+## Questions
+
+1. What is the index of the new sorted bam file?
+2. How many chromosomes are present and which version of the SAM is it?
 
 
