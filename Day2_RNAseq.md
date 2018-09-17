@@ -17,7 +17,7 @@ Today we will work with data from the Zebrafish at different stages of different
 - 2cells_1.fastq and 2cells_2.fastq: these files are based on RNA-seq data of a 2-cell zebrafish embryo, and
 - 6h_1.fastq and 6h_2.fastq: these files are based on RNA-seq data of zebrafish embryos 6h post fertilization.
 
-## Install STAR aligner
+## Step 2: Install STAR aligner
 
 ```
 sudo apt install rna-star
@@ -25,7 +25,7 @@ sudo apt install rna-star
 
 - The documentation for STAR is available [here](https://github.com/alexdobin/STAR/raw/master/doc/STARmanual.pdf)
 
-## Prepare all the directories and download the data
+## Step 3: Prepare all the directories and download the data
 
 - Remember you can go from one directory to the next using ***cd***. Now let's create a new directory called STARGenome.
 
@@ -38,9 +38,26 @@ wget http://hgdownload.soe.ucsc.edu/goldenPath/danRer11/bigZips/danRer11.fa.gz -
 wget https://github.com/carlalbc/BIO694_2018/blob/master/data/danRer11.gtf.gz -P reference
 ```
 
-## Generate the genome index with STAR
+- If you feel adventurous you can run FastQC on all the reads in the data folder we just created using to find out the read length and quality:
+
+```
+fastqc *.gz
+firefox *.html
+```
 
 
+## Step 4: Generate the genome index with STAR
+
+- Run STAR in "genomeGenerate" mode
+
+STAR -- runMode genomeGenerate \
+-- genomeDir ~/ STARindex \ # index will be stored there
+-- genomeFastaFiles $ { REF_DIR }/ sacCer3 . fa \ # reference genome sequence
+-- sjdbGTFfile $ { REF_DIR }/ sacCer3 . gtf \ # annotation file
+-- sjdbOverhang 49 # should be read length minus 1 ; length of the
+genomic sequence around the annotated junction to be used for the
+splice junctions database
+14 -- runThreadN 1 \ # can be used to define more processors
 
 
 A survey of best practices for RNA-seq data analysis
