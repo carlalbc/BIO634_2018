@@ -213,30 +213,30 @@ data is paired end
 Quality scores are 33 offset
 3) **threads 1** 
 number of threads to use
-4)**trimlog logfile2**
+4) **trimlog logfile2**
 name of logfile for summary information
-5)**Left_paired.fastq**
+5) **Left_paired.fastq**
 name of input adapter trimmed left fastq file
-6)**Right_paired.fastq**
+6) **Right_paired.fastq**
 name of input adapter trimmed right fastq file
-7)**Left_trim_paired.fastq**
+7) **Left_trim_paired.fastq**
 paired trimmed output fastq file for left reads
-8)**Left_unpaired.fastq**
+8) **Left_unpaired.fastq**
 unpaired trimmed output fastq file for left reads
-9)**Right_paired.fastq**
+9) **Right_paired.fastq**
 paired trimmed output fastq file for right reads
-10)**Right_unpaired.fastq**
+10) **Right_unpaired.fastq**
 unpaired trimmed output fastq file for right reads
-11)**LEADING:3**
+11) **LEADING:3**
 Trim 5’ bases with quality score < 3
-12)**TRAILING:3**
+12) **TRAILING:3**
 Trim 3’ bases with quality score < 3
-13)**SLIDINGWINDOW:4:15** see manual for explanation
-14)**MINLEN:36**
+13) **SLIDINGWINDOW:4:15** see manual for explanation
+14) **MINLEN:36**
 delete reads trimmed below length MINLEN
 
 
-#Questions:
+# Questions:
 
 - What was the screenlog of Trimmomatic this time? How many reads were removed? Whas there any?
 - What does the SLIDINGWINDOW:4:15 means? Check the manual.
