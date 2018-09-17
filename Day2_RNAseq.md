@@ -17,12 +17,12 @@ Today we will work with data from the Zebrafish at different stages of different
 - 2cells_1.fastq and 2cells_2.fastq: these files are based on RNA-seq data of a 2-cell zebrafish embryo, and
 - 6h_1.fastq and 6h_2.fastq: these files are based on RNA-seq data of zebrafish embryos 6h post fertilization.
 
-## Clone binaries of STAR with git
+## Install STAR aligner
 
 ```
-git clone https://github.com/alexdobin/STAR.git
-
+sudo apt install rna-star
 ```
+
 - The documentation for STAR is available [here](https://github.com/alexdobin/STAR/raw/master/doc/STARmanual.pdf)
 
 ## Prepare all the directories and download the data
@@ -30,13 +30,15 @@ git clone https://github.com/alexdobin/STAR.git
 - Remember you can go from one directory to the next using ***cd***. Now let's create a new directory called STARGenome.
 
 ```
-mkdir STARGenome reference data
-cd STARGenome
-wget ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/2cells_1.fastq ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/2cells_2.fastq ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/6h_1.fastq ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/6h_2.fastq
+mkdir danRer 
+mkdir danRer/reference danRer/data
+cd danRer
+wget ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/2cells_1.fastq ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/2cells_2.fastq ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/6h_1.fastq ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/6h_2.fastq -P data
 wget http://hgdownload.soe.ucsc.edu/goldenPath/danRer11/bigZips/danRer11.fa.gz -P reference
+wget https://github.com/carlalbc/BIO694_2018/blob/master/data/danRer11.gtf.gz -P reference
 ```
 
-
+## Generate the genome index with STAR
 
 
 
