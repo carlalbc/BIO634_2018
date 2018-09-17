@@ -344,7 +344,7 @@ samtools faidx GCF_000005845.2_ASM584v2_genomic.fna
 ```
 - picard index
 ```
-java -jar picard.jar CreateSequenceDictionary R=GCF_000005845.2_ASM584v2_genomic.fna O=GCF_000005845.2_ASM584v2_genomic.dict
+java -jar /home/APPL/PICARD/picard.2.18.0.jar CreateSequenceDictionary R=GCF_000005845.2_ASM584v2_genomic.fna O=GCF_000005845.2_ASM584v2_genomic.dict
 ```
 
 # Step 3: Align reads to the Reference Genome using BWA
