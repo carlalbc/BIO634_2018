@@ -31,7 +31,7 @@ in the same medium for more than 60,000 generations, with samples preserved ever
 
 Let's get started! 
 
-## Step 1: Downloading raw sequencing reads from a database.
+## Step 1: Downloading raw sequencing fastq files from a database.
 
 - There are two main databases, the **Sequence Read Archive** (SRA, US based) and the **European nucleotide archive** (ENA, EU based). 
 
@@ -67,7 +67,7 @@ head SRR6170103/SRR6170103_1.fastq.gz           (shows the first 10 lines)
 Now that you have seen the files, continue with the rest of the workflow.
 
 
-# Quality assesment of the fastq files using FastQC
+## 1. Quality assesment of the fastq files using FastQC
 
 FastQC is a quality control tool for high throughput sequence data.
 
@@ -152,7 +152,7 @@ There is usually an expected drop in quality at the 3’ end of the sequences as
 **Do not close the FastQC window as we will compare the original files to the ones we will produce after adapter removal and quality filtering.**
 
 
-# Trimming, removing adaptors and low quality reads with Trimmomatic: 
+## 2. Trimming, removing adaptors and low quality reads with Trimmomatic: 
 
 ## Step 3: Use Trimmomatic to remove adapter sequences 
 
@@ -245,7 +245,12 @@ delete reads trimmed below length MINLEN
 - What was the screenlog of Trimmomatic this time? How many reads were removed? Whas there any?
 - What does the SLIDINGWINDOW:4:15 means? Check the manual.
 
+## 3. Correcting errors
+
 ## Step 5: Use SOAPec to correct sequencing errors
+
+SOAPec is a tool is a read correction tool specifically designed for illumina short reads, the manual can be found [here](http://soap.genomics.org.cn/about.html). The command below will take the trimmed fastq files generated in step 4 and correct sequencing errors in a two step process using tools called KmerFreq_AR and Corrector_AR.
+
 
 If not installed already, download SOAPec
 
