@@ -17,18 +17,19 @@ Today we will work with data from the Zebrafish at different stages of different
 - 2cells_1.fastq and 2cells_2.fastq: these files are based on RNA-seq data of a 2-cell zebrafish embryo, and
 - 6h_1.fastq and 6h_2.fastq: these files are based on RNA-seq data of zebrafish embryos 6h post fertilization.
 
-
-- Prepare a directory called STARGenome
+## Prepare all the directories and download the data
 
 - Remember you can go from one directory to the next using ***cd***. Now let's create a new directory called STARGenome.
 
 ```
-mkdir STARGenome
+mkdir STARGenome reference data
 cd STARGenome
-wget 
+wget ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/2cells_1.fastq ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/2cells_2.fastq ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/6h_1.fastq ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/6h_2.fastq
+wget http://hgdownload.soe.ucsc.edu/goldenPath/danRer11/bigZips/danRer11.fa.gz -P reference
+```
 
 
-We recommend using the STAR aligner for all genomes where there are no alt alleles. For genomes such as hg38 that have alt alleles, hisat2 should be used as it handles the alts correctly and STAR does not yet. Use Tophat2 only if you do not have enough RAM available to run STAR (about 30 GB).
+
 
 
 
