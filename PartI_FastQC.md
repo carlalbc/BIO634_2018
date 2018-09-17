@@ -39,11 +39,13 @@ Let's get started!
  
 1. Create the following directories and go to the main directory (remember it's good to keep things tidy!):
 
-``` 
-mkdir fastq                  (creates a folder called fastq)
-mkdir fastq/SRR6170103       (creates a subdirectory for the fastq files)
-cd fastq/SRR6170103          (goes to the SRR6170103 inside the fastq directory)
-mkdir FastQC                 (we will store the results from the QC here later)
+
+```
+mkdir mapping
+mkdir fastq                          (creates a folder called fastq)
+mkdir mapping/fastq/SRR6170103       (creates a subdirectory for the fastq files)
+cd mapping/fastq/SRR6170103          (goes to the SRR6170103 inside the fastq directory)
+mkdir FastQC                         (we will store the results from the QC here later)
 ``` 
 
 2. Download the fastq files from ENA - we will work with paired-end reads from E. coli:
@@ -64,6 +66,10 @@ head SRR6170103/SRR6170103_1.fastq.gz           (shows the first 10 lines)
 
 Now that you have seen the files, continue with the rest of the workflow.
 
+
+# Quality assesment of the fastq files using FastQC
+
+FastQC is a quality control tool for high throughput sequence data.
 
 ## Step 2: Run FASTQC
 
@@ -141,14 +147,18 @@ SRR6170103_2 Total number of sequences  _________
 4. What are the warnings we get for each of the fastq files? 
 5. Which sequence seems to be overrepresented? 
 
-There is an expected drop in quality at the 3’ end of the sequences and also to get an overrepresentation of adaptor sequences. We will trim the low quality ends and remove adaptors next.
+There is usually an expected drop in quality at the 3’ end of the sequences as well as an expected overrepresentation of adaptor sequences. We will learn how to trim low quality ends and remove adaptors.
 
 **Do not close the FastQC window as we will compare the original files to the ones we will produce after adapter removal and quality filtering.**
 
 
-c) Trimming, removing adaptors and low quality reads with Trimmomatic: a java tool for performing a range of trimming tasks on Illumina paired end and single end read data. The manual can be found [here](http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/TrimmomaticManual_V0.32.pdf)
+# Trimming, removing adaptors and low quality reads with Trimmomatic: 
 
-## Step 3: Use Trimmomatic to remove adapter sequences
+## Step 3: Use Trimmomatic to remove adapter sequences 
+
+Trimmomatic is a java tool for performing a range of trimming tasks on Illumina paired end and single end read data. The manual can be found [here](http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/TrimmomaticManual_V0.32.pdf)
+
+- 
 
 ```
 java -jar trimmomatic-0.35.jar PE -phred33  SRR6170103_1.fastq.gz SRR6170103_2.fastq.gz SRR6170103_1_paired.fastq.gz SRR6170103_1_unpaired.fastq.gz SRR6170103_2_paired.fastq.gz SRR6170103_2_unpaired.fastq.gz ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
@@ -292,13 +302,30 @@ ________________________________________________________________________________
 **If you closed FastQC before, open it and run it for the trimmed paired-end reads, do they look very different?**
 
 
-Congratulations you now can continue with the next step of our practice! :octocat:
+Congratulations you now can continue with the next step of our workflow! :octocat:
+
+NOTE: Exit the fastq folder using ***cd ..*** until you get to your main directory
+
+## II) Mapping sequencing reads to a reference genome using the Burrows-Wheeler Aligner (BWA) tool
 
 
+In this part of the hands-on session we will map the cleaned reads from the previous steps to the reference genome of *E. coli*.
 
-# II) Mapping the reads to a reference genome of *E. coli* using Burrows Wheeler Aligner (BWA).
+##Step 1: Download the reference genome and its annotation file
 
+
+```
+
+mkdir 
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.gff.gz
+```
+
+ 
 Here's the [manual](http://bio-bwa.sourceforge.net/bwa.shtml)
+
+
+
 
 
 
