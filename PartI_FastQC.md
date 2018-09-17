@@ -401,7 +401,7 @@ samtools flagstat SRR6170103_final.bam > SRR6170103_final.flagstat
 2. Do you observe any diferences between the file with and without duplicates? (Hint: look at the flagstat files)
 
 
-## BAM visualisation
+## BAM visualization
 
 We will use the java web start version of IGV.
 Follow this link: ​ https://www.broadinstitute.org/software/igv/download
