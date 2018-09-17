@@ -1,5 +1,6 @@
 # BIO694 - Next generation sequencing (NGS) II. Genomes, Variant Calling and Biological Interpretation
-## September 17-18th 2018, University of Zürich (UZH)
+## September 17-18th 2018
+## University of Zürich (UZH) 
 
 ![alt text](https://github.com/carlalbc/URPP_tutorials/blob/master/img/Logo_URPP_kl2.png)
 
