@@ -6,7 +6,9 @@
 
 ## URPP Evolution in action
 
-# Part II.- RNA sequencing: Transcriptomes and differential gene expression analyses
+# Day 2.- RNA sequencing: Transcriptomes and differential gene expression analyses
+
+# I. Aligning transcriptomes with STAR
 
 ## Step 1: Read mapping with STAR aligner:
 
@@ -79,7 +81,7 @@ STAR --runThreadN 4 --genomeDir danRer11.fa --readFilesIn ../data/2cells_1.fastq
 
 Do the same for the other pair of reads (6h_1.fastq and 6h_2.fastq)
 
-# Exploration of airway library: 
+# II. Exploration of airway library: 
 
 - To start let's install some R packages. In the terminal write the following:
 
@@ -96,7 +98,7 @@ Now go to the following [link](https://www.bioconductor.org/help/course-material
 
 # Diferential analysis: Comparison between DESEq and edgeR
 
-## Step 1: Install the libraries
+## Step 1: Install the libraries (if you haven't)
 
 ```
 sudo R
