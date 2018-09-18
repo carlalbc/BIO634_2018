@@ -98,7 +98,7 @@ Now go to the following [link](https://www.bioconductor.org/help/course-material
 ) to where it says *"Locating BAM files and the sample table"* and start from there.
 
 
-# III. Diferential analysis: Comparison between DESEq and edgeR
+# III. Differential analysis: Comparison between DESEq and edgeR
 
 
 ## Step 1 and 2: Open **rstudio** by typing ***rstudio*** in the command-line and install the packages like in the previous part.
