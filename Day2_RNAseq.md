@@ -96,7 +96,7 @@ Now go to the following [link](https://www.bioconductor.org/help/course-material
 ) to where it says *Locating BAM files and the sample table* and start from there.
 
 
-# Diferential analysis: Comparison between DESEq and edgeR
+# III. Diferential analysis: Comparison between DESEq and edgeR
 
 ## Step 1: Install the libraries (if you haven't)
 
