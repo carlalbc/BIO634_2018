@@ -90,7 +90,7 @@ Do the same for the other pair of reads (6h_1.fastq and 6h_2.fastq)
 ```
 sudo R
 source("https://bioconductor.org/biocLite.R")
-biocLite(c("VennDiagram", "DESeq","edgeR", "Matrix", "airway", "Rsamtools", "pasilla", "GenomicFeatures", "GenomicAlignments","BiocParallel"))
+biocLite(c("VennDiagram", "DESeq","edgeR", "Matrix", "airway", "Rsamtools", "pasilla", "GenomicFeatures", "GenomicAlignments","BiocParallel", "Rsubread"))
 ```
 ## Step 2: Open **rstudio** by typing ***rstudio*** in the command-line
 
