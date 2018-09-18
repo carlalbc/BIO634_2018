@@ -56,7 +56,9 @@ firefox *.html
 ```
 mkdir STARindex
 gunzip reference/*.gz
-STAR --runMode genomeGenerate --readFilesCommand zcat --genomeDir STARindex --genomeFastaFiles <(gunzip -c Danio_rerio.GRCz11.dna.toplevel.fa.gz) --sjdbGTFfile Danio_rerio.GRCz11.93.gtf.gz --sjdbOverhang 75 --runThreadN 4 
+
+STAR --runMode genomeGenerate --readFilesCommand zcat --genomeDir STARindex --genomeFastaFiles danRer11.fa --sjdbGTFfile danRer11.gtf --sjdbOverhang 75 --runThreadN 4
+
 ```
 
 ## Step 5: Perform the alignment with STAR:
@@ -70,17 +72,26 @@ mkdir alignment_STAR
 
 Now align the pair of files from the 2cells sample to the genome, using the following parameters:
 
-• Number of threads: 4
-• Genome dir: reference
-• Fastq files: The two fastq files from the 2cells sample, contained in the folder
-data (Remember: this is paired-end data, so you need to provide the file names
-of both files at the same time!)
-• Add the outSAMtype parameter to generate a BAM file sorted by coordinate (see
-section 4.3)
 
 ```
-STAR --runThreadN 4 --genomeDir <(gunzip -c reference/Danio_rerio.GRCz11.dna.toplevel.fa.gz) --readFilesIn data/2cells_1.fastq  data/2cells_2.fastq --outSAMtype BAM SortedByCoordinate
+STAR --runThreadN 4 --genomeDir danRer11.fa --readFilesIn ../data/2cells_1.fastq  ../data/2cells_2.fastq --outSAMtype BAM SortedByCoordinate
 ```
+
+Do the same for the other pair of reads (6h_1.fastq and 6h_2.fastq)
+
+# Exploration of airway library: 
+
+- To start let's install some R packages. In the terminal write the following:
+
+```
+sudo R
+source("https://bioconductor.org/biocLite.R")
+biocLite(c("VennDiagram", "DESeq","edgeR", "Matrix", "airway"))
+```
+
+
+Now go to the following [link](https://www.bioconductor.org/help/course-materials/2016/CSAMA/lab-3-rnaseq/rnaseq_gene_CSAMA2016.html
+) to where it says *Locating BAM files and the sample table* and start from there.
 
 
 # Diferential analysis: Comparison between DESEq and edgeR
@@ -90,7 +101,7 @@ STAR --runThreadN 4 --genomeDir <(gunzip -c reference/Danio_rerio.GRCz11.dna.top
 ```
 sudo R
 source("https://bioconductor.org/biocLite.R")
-biocLite(c("VennDiagram", "DESeq","edgeR"))
+biocLite(c("VennDiagram", "DESeq","edgeR", "Matrix", "airway"))
 ```
 ## Step 2: Open **rstudio** by typing *rstudio* in the command-line
 
