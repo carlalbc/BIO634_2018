@@ -181,28 +181,5 @@ with(subset(merged, padj<0.05), points(logFC, conditiontreated, xlab="logFC edge
 legend("topleft", xjust=1, yjust=1, legend=c("FDR<0.05 edgeR only", "FDR<0.05 DESeq & edgeR", "FDR>0.05"), pch=20, col=c("red", "green", "black"), bty="n")
 
 ```
-```
-# > sessionInfo()
-# R version 2.15.0 (2012-03-30)
-# Platform: i386-apple-darwin9.8.0/i386 (32-bit)
-# 
-# locale:
-#   [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-# 
-# attached base packages:
-#   [1] stats     graphics  grDevices utils     datasets  methods   base     
-# 
-# other attached packages:
-#   [1] DESeq_1.9.11        lattice_0.20-10     locfit_1.5-8       
-#   [4] Biobase_2.16.0      BiocGenerics_0.2.0  edgeR_2.99.8       
-#   [7] limma_3.12.1        BiocInstaller_1.4.7
-# 
-# loaded via a namespace (and not attached):
-#   [1] annotate_1.34.1      AnnotationDbi_1.18.1 DBI_0.2-5           
-#   [4] genefilter_1.38.0    geneplotter_1.34.0   grid_2.15.0         
-#   [7] IRanges_1.14.4       RColorBrewer_1.0-5   RSQLite_0.11.1      
-#  [10] splines_2.15.0       stats4_2.15.0        survival_2.36-14    
-#  [13] tools_2.15.0         XML_3.9-4            xtable_1.7-0
-```
 
 - Taken from "A survey of best practices for RNA-seq data analysis" https://doi.org/10.1186/s13059-016-0881-8
