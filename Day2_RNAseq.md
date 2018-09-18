@@ -34,32 +34,34 @@ mkdir danRer
 mkdir danRer/reference danRer/data
 cd danRer
 wget ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/2cells_1.fastq ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/2cells_2.fastq ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/6h_1.fastq ftp://ftp.ebi.ac.uk/pub/training/Train_online/RNA-seq_exercise/6h_2.fastq -P data
-wget http://hgdownload.soe.ucsc.edu/goldenPath/danRer11/bigZips/danRer11.fa.gz -P reference
-wget https://github.com/carlalbc/BIO694_2018/blob/master/data/danRer11.gtf.gz -P reference
+wget ftp.ensembl.org/pub/release-93/fasta/danio_rerio/dna/Danio_rerio.GRCz11.dna.toplevel.fa.gz -P reference
+wget ftp://ftp.ensembl.org/pub/release-93/gtf/danio_rerio/Danio_rerio.GRCz11.93.gtf.gz -P reference
 ```
 
-- If you feel adventurous you can run FastQC on all the reads in the data folder we just created using to find out the read length and quality:
+- If you feel adventurous you can run FastQC on all the reads in the **data** folder we just created using **cd** and find out the read length and quality:
 
 ```
 fastqc *.gz
 firefox *.html
 ```
 
-
 ## Step 4: Generate the genome index with STAR
 
 - Run STAR in "genomeGenerate" mode
 
-STAR -- runMode genomeGenerate \
--- genomeDir ~/ STARindex \ # index will be stored there
--- genomeFastaFiles $ { REF_DIR }/ sacCer3 . fa \ # reference genome sequence
--- sjdbGTFfile $ { REF_DIR }/ sacCer3 . gtf \ # annotation file
--- sjdbOverhang 49 # should be read length minus 1 ; length of the
-genomic sequence around the annotated junction to be used for the
-splice junctions database
+```
+ STAR  [options]... --genomeDir REFERENCE   --readFilesIn R1.fq R2.fq
+```
+
+```
+mkdir STARindex
+gunzip reference/*.gz
+STAR --runMode genomeGenerate --genomeDir STARindex --genomeFastaFiles reference/Danio_rerio.GRCz11.dna.toplevel.fa.gz --sjdbGTFfile reference/Danio_rerio.GRCz11.93.gtf.gz --sjdbOverhang 75 --runThreadN 1 
+```
+
+
+
 14 -- runThreadN 1 \ # can be used to define more processors
-
-
 A survey of best practices for RNA-seq data analysis
 Ana ConesaEmail author, Pedro MadrigalEmail author, Sonia Tarazona, David Gomez-Cabrero, Alejandra Cervera, Andrew McPherson, Michał Wojciech Szcześniak, Daniel J. Gaffney, Laura L. Elo, Xuegong Zhang and Ali MortazaviEmail author
 Genome Biology201617:13
