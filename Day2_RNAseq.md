@@ -85,12 +85,14 @@ Do the same for the other pair of reads (6h_1.fastq and 6h_2.fastq)
 
 - To start let's install some R packages. In the terminal write the following:
 
+## Step 1: Install R packages 
+
 ```
 sudo R
 source("https://bioconductor.org/biocLite.R")
-biocLite(c("VennDiagram", "DESeq","edgeR", "Matrix", "airway"))
+biocLite(c("VennDiagram", "DESeq","edgeR", "Matrix", "airway", "Rsamtools"))
 ```
-
+## Step 2: Open **rstudio** by typing ***rstudio*** in the command-line
 
 Now go to the following [link](https://www.bioconductor.org/help/course-materials/2016/CSAMA/lab-3-rnaseq/rnaseq_gene_CSAMA2016.html
 ) to where it says *"Locating BAM files and the sample table"* and start from there.
@@ -98,19 +100,12 @@ Now go to the following [link](https://www.bioconductor.org/help/course-material
 
 # III. Diferential analysis: Comparison between DESEq and edgeR
 
-## Step 1: Install the libraries (if you haven't)
 
-```
-sudo R
-source("https://bioconductor.org/biocLite.R")
-biocLite(c("VennDiagram", "DESeq","edgeR", "Matrix", "airway","Rsamtools"))
-```
-## Step 2: Open **rstudio** by typing *rstudio* in the command-line
+## Step 1 and 2: Open **rstudio** by typing ***rstudio*** in the command-line and install the packages like in the previous part.
 
 - You can always copy&paste, but it is important that you understand what you are doing... go through chunks of the modules instead of everything at once. Each module is separated by a *#* which denotes a "comment" on the script. 
 
 - Start by loading the libraries:
-
 
 ```
 library(DESeq) 
