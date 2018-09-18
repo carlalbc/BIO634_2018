@@ -64,15 +64,18 @@ STAR --runMode genomeGenerate --genomeDir STARindex --genomeFastaFiles reference
 
 
 # Note: using the devel versions of both packages!
+```
 library(DESeq) # version 1.9.11
 library(edgeR) # version 2.99.8
 library(VennDiagram)
+
 
 # Read in data ------------------------------------------------------------
 
 ## Use pasilla data
 datafile = system.file( "extdata/pasilla_gene_counts.tsv", package="pasilla" )
 datafile
+
 
 ## Read in the data making the row names the first column
 counttable <- read.table(datafile, header=T, row.names=1)
@@ -115,7 +118,10 @@ dpadj <- p.adjust(dpval, method="BH")
 dtable <- transform(dfit1, pval=dpval, padj=dpadj)
 dtable <- dtable[order(dtable$padj), ]
 head(dtable)
+```
+- Now with edgeR
 
+```
 # edgeR -------------------------------------------------------------------
 
 ## Make design matrix
@@ -163,7 +169,8 @@ with(subset(merged, FDR<0.05),  points(logFC, conditiontreated, xlab="logFC edge
 with(subset(merged, padj<0.05), points(logFC, conditiontreated, xlab="logFC edgeR", ylab="logFC DESeq", pch=20, col="green"))
 legend("topleft", xjust=1, yjust=1, legend=c("FDR<0.05 edgeR only", "FDR<0.05 DESeq & edgeR", "FDR>0.05"), pch=20, col=c("red", "green", "black"), bty="n")
 
-
+```
+```
 # > sessionInfo()
 # R version 2.15.0 (2012-03-30)
 # Platform: i386-apple-darwin9.8.0/i386 (32-bit)
@@ -185,5 +192,6 @@ legend("topleft", xjust=1, yjust=1, legend=c("FDR<0.05 edgeR only", "FDR<0.05 DE
 #   [7] IRanges_1.14.4       RColorBrewer_1.0-5   RSQLite_0.11.1      
 #  [10] splines_2.15.0       stats4_2.15.0        survival_2.36-14    
 #  [13] tools_2.15.0         XML_3.9-4            xtable_1.7-0
+```
 
 - A survey of best practices for RNA-seq data analysis https://doi.org/10.1186/s13059-016-0881-8
