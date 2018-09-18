@@ -93,7 +93,7 @@ biocLite(c("VennDiagram", "DESeq","edgeR", "Matrix", "airway"))
 
 
 Now go to the following [link](https://www.bioconductor.org/help/course-materials/2016/CSAMA/lab-3-rnaseq/rnaseq_gene_CSAMA2016.html
-) to where it says *Locating BAM files and the sample table* and start from there.
+) to where it says *"Locating BAM files and the sample table"* and start from there.
 
 
 # III. Diferential analysis: Comparison between DESEq and edgeR
