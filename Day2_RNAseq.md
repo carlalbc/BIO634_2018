@@ -70,8 +70,6 @@ source("https://bioconductor.org/biocLite.R")
 biocLite(c("VennDiagram", "DESeq","edgeR"))
 ```
 
-# Note: using the devel versions of both packages!
-
 - Open **rstudio** by typing *rstudio* in the command-line
 
 - You can always copy&paste, but it is important that you understand what you are doing... go through pieces of the module instead of everything at once. Start by loading the libraries:
