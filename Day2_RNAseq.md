@@ -62,17 +62,18 @@ STAR --runMode genomeGenerate --genomeDir STARindex --genomeFastaFiles reference
 
 # Diferential analysis: Comparison between DESEq and edgeR
 
-Install the libraries
+## Step 1: Install the libraries
 
 ```
 sudo R
 source("https://bioconductor.org/biocLite.R")
 biocLite(c("VennDiagram", "DESeq","edgeR"))
 ```
+## Step 2: Open **rstudio** by typing *rstudio* in the command-line
 
-- Open **rstudio** by typing *rstudio* in the command-line
+- You can always copy&paste, but it is important that you understand what you are doing... go through chunks of the modules instead of everything at once. Each module is separated by a *#* which denotes a "comment" on the script. 
 
-- You can always copy&paste, but it is important that you understand what you are doing... go through pieces of the module instead of everything at once. Start by loading the libraries:
+- Start by loading the libraries:
 
 
 ```
