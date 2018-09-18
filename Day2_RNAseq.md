@@ -103,7 +103,7 @@ Now go to the following [link](https://www.bioconductor.org/help/course-material
 ```
 sudo R
 source("https://bioconductor.org/biocLite.R")
-biocLite(c("VennDiagram", "DESeq","edgeR", "Matrix", "airway"))
+biocLite(c("VennDiagram", "DESeq","edgeR", "Matrix", "airway","Rsamtools"))
 ```
 ## Step 2: Open **rstudio** by typing *rstudio* in the command-line
 
