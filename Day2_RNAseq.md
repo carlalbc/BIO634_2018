@@ -56,7 +56,30 @@ firefox *.html
 ```
 mkdir STARindex
 gunzip reference/*.gz
-STAR --runMode genomeGenerate --genomeDir STARindex --genomeFastaFiles reference/Danio_rerio.GRCz11.dna.toplevel.fa.gz --sjdbGTFfile reference/Danio_rerio.GRCz11.93.gtf.gz --sjdbOverhang 75 --runThreadN 1 
+STAR --runMode genomeGenerate --readFilesCommand zcat --genomeDir STARindex --genomeFastaFiles <(gunzip -c Danio_rerio.GRCz11.dna.toplevel.fa.gz) --sjdbGTFfile Danio_rerio.GRCz11.93.gtf.gz --sjdbOverhang 75 --runThreadN 4 
+```
+
+## Step 5: Perform the alignment with STAR:
+
+- Make a folder to store the STAR output in it
+
+```
+mkdir alignment_STAR
+```
+- You can align the fastq files to the genome. The commands for this are explained in section 3.1 of the manual.12
+
+Now align the pair of files from the 2cells sample to the genome, using the following parameters:
+
+• Number of threads: 4
+• Genome dir: reference
+• Fastq files: The two fastq files from the 2cells sample, contained in the folder
+data (Remember: this is paired-end data, so you need to provide the file names
+of both files at the same time!)
+• Add the outSAMtype parameter to generate a BAM file sorted by coordinate (see
+section 4.3)
+
+```
+STAR --runThreadN 4 --genomeDir <(gunzip -c reference/Danio_rerio.GRCz11.dna.toplevel.fa.gz) --readFilesIn data/2cells_1.fastq  data/2cells_2.fastq --outSAMtype BAM SortedByCoordinate
 ```
 
 
@@ -84,7 +107,7 @@ library(VennDiagram)
 
 # Read in data ------------------------------------------------------------
 
-## Use pasilla data
+## Use pasilla data (from Drosophila)
 datafile = system.file( "extdata/pasilla_gene_counts.tsv", package="pasilla" )
 datafile
 
@@ -92,8 +115,11 @@ datafile
 ## Read in the data making the row names the first column
 counttable <- read.table(datafile, header=T, row.names=1)
 head(counttable)
+```
 
 ## Make metadata data.frame
+
+```
 meta <- data.frame(
   row.names=colnames(counttable),
   condition=c("untreated", "untreated", "untreated", "untreated", "treated", "treated", "treated"),
