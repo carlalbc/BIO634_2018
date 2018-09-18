@@ -62,11 +62,24 @@ STAR --runMode genomeGenerate --genomeDir STARindex --genomeFastaFiles reference
 
 # Diferential analysis: Comparison between DESEq and edgeR
 
+Install the libraries
+
+```
+sudo R
+source("https://bioconductor.org/biocLite.R")
+biocLite(c("VennDiagram", "DESeq","edgeR"))
+```
 
 # Note: using the devel versions of both packages!
+
+- Open **rstudio** by typing *rstudio* in the command-line
+
+- You can always copy&paste, but it is important that you understand what you are doing... go through pieces of the module instead of everything at once. Start by loading the libraries:
+
+
 ```
-library(DESeq) # version 1.9.11
-library(edgeR) # version 2.99.8
+library(DESeq) 
+library(edgeR) 
 library(VennDiagram)
 
 
@@ -118,10 +131,9 @@ dpadj <- p.adjust(dpval, method="BH")
 dtable <- transform(dfit1, pval=dpval, padj=dpadj)
 dtable <- dtable[order(dtable$padj), ]
 head(dtable)
-```
-- Now with edgeR
 
-```
+# Now with edgeR
+
 # edgeR -------------------------------------------------------------------
 
 ## Make design matrix
@@ -194,4 +206,4 @@ legend("topleft", xjust=1, yjust=1, legend=c("FDR<0.05 edgeR only", "FDR<0.05 DE
 #  [13] tools_2.15.0         XML_3.9-4            xtable_1.7-0
 ```
 
-- A survey of best practices for RNA-seq data analysis https://doi.org/10.1186/s13059-016-0881-8
+- Taken from "A survey of best practices for RNA-seq data analysis" https://doi.org/10.1186/s13059-016-0881-8
