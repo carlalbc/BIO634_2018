@@ -1,4 +1,4 @@
-# BIO694 - Next generation sequencing (NGS) II. Genomes, Variant Calling and Biological Interpretation
+# BIO634 - Next generation sequencing (NGS) II. Transcriptomes, Variant Calling and Biological Interpretation
 ## September 17-18th 2018
 ## University of Zürich (UZH) 
 
